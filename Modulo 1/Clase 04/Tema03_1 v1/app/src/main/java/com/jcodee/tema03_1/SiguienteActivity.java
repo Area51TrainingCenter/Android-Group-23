@@ -1,5 +1,6 @@
 package com.jcodee.tema03_1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class SiguienteActivity extends AppCompatActivity {
     private GridView gvDatos;
 
     private ElementoAdapter adapter;
-    private ArrayList<Elemento> lista = new ArrayList<>();
+    public static ArrayList<Elemento> lista = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,6 +99,17 @@ public class SiguienteActivity extends AppCompatActivity {
 
                 lista.add(new Elemento(lista.size(), rutaImagen, descripcion));
                 adapter.notifyDataSetChanged();
+            }
+        });
+
+        gvDatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SiguienteActivity.this, MostrarActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("posicion", position);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

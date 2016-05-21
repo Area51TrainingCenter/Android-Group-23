@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SiguienteActivity" />
+        <activity android:name=".MostrarActivity" />
     </application>
 
 </manifest>
