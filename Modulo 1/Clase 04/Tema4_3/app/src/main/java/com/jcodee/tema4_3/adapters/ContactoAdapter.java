@@ -2,12 +2,14 @@ package com.jcodee.tema4_3.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jcodee.tema4_3.R;
@@ -60,6 +62,9 @@ public class ContactoAdapter extends BaseAdapter {
         @BindView(R.id.btnTelCasa)
         Button btnTelCasa;
 
+        @BindView(R.id.llContenedor)
+        LinearLayout llContenedor;
+
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
@@ -71,6 +76,13 @@ public class ContactoAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
             viewHolder = new ViewHolder(convertView);
+
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/PTN57F.ttf");
+            viewHolder.lblNombre.setTypeface(typeface);
+
+            typeface = Typeface.createFromAsset(context.getAssets(), "fonts/waltographUI.ttf");
+            viewHolder.lblApellido.setTypeface(typeface);
+
             convertView.setTag(viewHolder);
         }
         viewHolder = (ViewHolder) convertView.getTag();
@@ -78,6 +90,7 @@ public class ContactoAdapter extends BaseAdapter {
         final Contacto contacto = (Contacto) getItem(position);
         viewHolder.lblNombre.setText(contacto.getNombre());
         viewHolder.lblApellido.setText(contacto.getApellido());
+        viewHolder.llContenedor.setBackgroundColor(contacto.getColor());
 
         viewHolder.btnCelular.setOnClickListener(new View.OnClickListener() {
             @Override

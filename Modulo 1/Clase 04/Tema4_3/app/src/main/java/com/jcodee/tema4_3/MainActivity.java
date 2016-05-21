@@ -65,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
                 String apellido = txtApellido.getText().toString();
                 String celular = txtCelular.getText().toString();
                 String telefono = txtNumeroCasa.getText().toString();
+                int color = 0;
+                switch (spColor.getSelectedItemPosition()) {
+                    case 0:
+                        color = getResources().getColor(android.R.color.holo_blue_light);
+                        break;
+                    case 1:
+                        color = getResources().getColor(android.R.color.holo_red_light);
+                        break;
+                    case 2:
+                        color = getResources().getColor(android.R.color.holo_green_light);
+                        break;
+                }
 
                 if (nombre.length() > 0 &&
                         apellido.length() > 0 &&
@@ -76,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     contacto.setApellido(apellido);
                     contacto.setCelular(celular);
                     contacto.setTelefono(telefono);
+                    contacto.setColor(color);
                     lista.add(contacto);
                     adapter.notifyDataSetChanged();
 
