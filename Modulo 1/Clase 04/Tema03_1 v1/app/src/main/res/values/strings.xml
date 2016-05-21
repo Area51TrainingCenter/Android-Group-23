@@ -10,4 +10,5 @@
     <string name="on_premise">On-Premise Login</string>
     <string name="descripcion">Descripcion</string>
     <string name="guardar">Guardar</string>
+    <string name="detalle">Ver Detalle</string>
 </resources>

@@ -24,5 +24,11 @@ public class MostrarActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle.containsKey("posicion")) {
+            int posicion = bundle.getInt("posicion");
+            viewPager.setCurrentItem(posicion);
+        }
     }
 }
